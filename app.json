@@ -1,0 +1,68 @@
+{
+  "expo": {
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your class."
+        }
+      ],
+      [
+        "expo-document-picker",
+        {
+          "iCloudContainerEnvironment": "Production"
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icono2.png",
+          "color": "#9A9AD9",
+          "sounds": [
+            "./assets/sounds/acoustic.wav"
+          ]
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "name": "Mind Bloom",
+    "slug": "mindbloom",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icono.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash_new.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#497CFF"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mindbloom.tech"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icono.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.mindbloom.tech"
+    },
+    "web": {
+      "favicon": "./assets/icono.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "03ba6032-b001-4082-8c17-e78a6eeb9c25"
+      }
+    },
+    "owner": "ceecapp"
+  }
+}
