@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { GetDocumentTypes, GetProfile } from '../../../../../services/profile.service';
 import { DocumentType, Profile, ProfileResponse, UserInfo } from '../../../../../interfaces/UserInterfaces';
 
+
 export const useProfile = (user_id: number) => {
     const [documentTypes, setDocumentTypes] = useState<DocumentType[] | null>(null);
     const [loading, setLoading] = useState(true);

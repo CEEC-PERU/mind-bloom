@@ -6,9 +6,11 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamListAdmin } from '../../../../interfaces/NavigationInterfaces';
 import { CommonActions, useFocusEffect } from '@react-navigation/native';
 import { useUsersData } from './hooks/useUsersData';
+
 type Props = {
   readonly navigation: NativeStackNavigationProp<RootStackParamListAdmin, 'Users'>;
 };
+
 export default function UsersScreen({ navigation }: Props) {
   const { fetchData, filteredData, isLoading, setSearchedText, users } = useUsersData();
   const navigateToCreateCourse = () => {

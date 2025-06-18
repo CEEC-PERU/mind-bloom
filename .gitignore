@@ -7,6 +7,9 @@ mindbloom-c615e-firebase-adminsdk-s4o9j-7207634abb.json
 google-services.json
 android/app/google-services.json
 
+/android
+/ios
+
 
 # Expo
 .expo/

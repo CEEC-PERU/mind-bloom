@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, SafeAreaView, ScrollView, View, Alert } from 'react-native';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { NavigationProp } from '@react-navigation/native';
+import { useRoute, RouteProp, NavigationProp } from '@react-navigation/native';
 import { RootStackParamListAdmin } from '../../../../interfaces/NavigationInterfaces';
 import { styles } from './styles';
 import { DocumentType, ProfileRequest } from '../../../../interfaces/UserInterfaces';
@@ -10,13 +10,17 @@ import { useProfile } from './hooks/useProfile';
 import { PostProfile, PutProfile } from '../../../../services/profile.service';
 import { useAuth } from '../../../../context/AuthContext';
 import { PostImage } from '../../../../services/image.service';
+import { GetProfile } from "../../../../services/profile.service";
 import { Icon } from 'react-native-paper';
+
+//actualizar para que al enviar el registro , volver a actualizar o el perfil para que no aparezaca el formulario
+// tengo que salir y volver a ingresar a la app para que reconozca el perfil
 
 export type Props = {
     readonly navigation: NavigationProp<RootStackParamListAdmin, 'Dashboard'>;
 };
 
-const ProfileScreen = () => {
+const ProfileScreen : React.FC<{ navigation: NavigationProp<any> }> = ({ navigation }) => {
     const { userInfo } = useAuth();
     const user = userInfo as { id: number };
     const { documentTypes, error, loading, profile } = useProfile(user.id);
@@ -49,7 +53,23 @@ const ProfileScreen = () => {
                     if (savedProfile) {
                         Alert.alert("Éxito", `Perfil actualizado correctamente`);
                         
-
+                         Alert.alert("Éxito", "Perfil actualizado correctamente", [
+                        {
+                            text: "OK",
+                            onPress: async () => {
+                                // Opción 1: Recargar los datos del perfil
+                                const updatedProfile = await GetProfile(user.id);
+                                if (updatedProfile) {
+                                  
+                                    
+                                    // Opción 2: Navegar a la vista de perfil
+                                    navigation.navigate('ShowProfile');
+                                    
+                                   
+                                }
+                            }
+                        }
+ ]);
 
                     }
                 }
