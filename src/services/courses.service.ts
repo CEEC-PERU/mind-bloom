@@ -212,7 +212,7 @@ export const PostNewCamapignCourse = async (newUser: CampaignCourseRequest) => {
 
 
 
-export const sendCampaignUser = async (CampaignUser: CampaignUserRequest, userToken: string): Promise<void> => {
+export const sendCampaignUser = async (CampaignUser: CampaignUserRequest, userToken: string): Promise<boolean> => {
   try {
     const response = await axios.post(API_CAMPAIGNUSER_URL , CampaignUser, {
       headers: {
@@ -222,14 +222,15 @@ export const sendCampaignUser = async (CampaignUser: CampaignUserRequest, userTo
     }); 
     // Log or handle the response if needed
     console.log('CampaignUser sent successfully:', response.data);
+    return true;
   } catch (error) {
     const axiosError = error as AxiosError;
     if (axiosError.response?.status === 403) {
       console.error('Permission Denied: You do not have access to this resource.');
     } else {
-      console.error('Error while sending quiz result:', error);
+      console.error('Error inesperado', error);
     }
-    throw error;
+    return false;
   }
 };
 

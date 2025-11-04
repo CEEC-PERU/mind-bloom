@@ -72,7 +72,7 @@ export default function ClientsScreen({ navigation }: Props) {
        </TouchableOpacity>
        ))}
        </ScrollView>
-       <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginBottom: 10 }}>
+       <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginBottom: 30 }}>
   
          <TouchableOpacity
             onPress={() => setModalVisible(true)}

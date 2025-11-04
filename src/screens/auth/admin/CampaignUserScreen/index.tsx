@@ -39,29 +39,24 @@ export default function CampaignUserScreen() {
         try {
 
             if (userToken) {
-            setIsLoading(true);
-            const campaigncourse = {
-                campaign_id: selectedCampaignN || 0,
-                user_id: selectedClientN || 0
-            };
-            
-            const response = await sendCampaignUser(campaigncourse, userToken);
-        
-            if (response === null) {
-                Alert.alert("ERROR", "No se pudo crear el usuario, inténtalo más tarde");
-              } else if (Array.isArray(response)) {
-                Alert.alert("ÉXITO", "Se asigno la campaña con éxito");
-                setSelectedClient("" )
-                setSelectedCampaign("" )
-              } else {
-                Alert.alert("ÉXITO", "Se asigno la campaña  con éxito");
-                setSelectedClient("" )
-                setSelectedCampaign("" )
-              }
-        }
+                setIsLoading(true);
+                const campaigncourse = {
+                    campaign_id: selectedCampaignN || 0,
+                    user_id: selectedClientN || 0
+                };
+                
+                const result = await sendCampaignUser(campaigncourse, userToken);
+                if (result){
+                    Alert.alert("ÉXITO", "Se asigno la campaña con éxito");
+                    setSelectedClient("" )
+                    setSelectedCampaign("" )
+                } else {
+                    Alert.alert("ERROR", "No se pudo asignar la campaña");
+                }
+            }
         } catch (error) {
-            console.error(error);
-            throw error;
+            console.error('Error inseperado:', error);
+            Alert.alert("ERROR", "Error inesperado al asignar la campaña"); 
         } finally {
             setIsLoading(false);
         }
@@ -77,8 +72,8 @@ export default function CampaignUserScreen() {
                 }}>Asignar Campañas a UserAdmin</Text>
             </View>
             
-            {isLoading ? <View style={{ display: "flex", backgroundColor: "#fff", padding: 20, height: windowHeight * 0.70 }}><LoadIndicator animating size='large' /></View> :
-                <ScrollView style={{ display: "flex", backgroundColor: "#fff", padding: 20, height: windowHeight * 0.70 }}>
+            {isLoading ? <View style={{ display: "flex", backgroundColor: "#fff", padding: 20, height: windowHeight * 0.64 }}><LoadIndicator animating size='large' /></View> :
+                <ScrollView style={{ display: "flex", backgroundColor: "#fff", padding: 20, height: windowHeight * 0.64 }}>
                   
                   <Text style={{ fontSize: 15, marginLeft: 0, fontWeight: '400' }}>*Selecciona a un UserAdmin y asignale una campaña  </Text>
                
