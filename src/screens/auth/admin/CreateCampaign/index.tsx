@@ -70,7 +70,7 @@ export default function CreateCampaign({ navigation }: Props) {
                     <LoadIndicator animating size='large' />
                 </View>
             ) : (
-                <ScrollView style={{ display: "flex", backgroundColor: "#fff", padding: 20, height: windowHeight * 0.70 }}>
+                <ScrollView style={{ display: "flex", backgroundColor: "#fff", padding: 20, height: windowHeight * 0.65 }}>
                     <CourseInput control={control} label='Nombre de Campaña' name='name' inputType='text' rules={rules} />
                     <CourseInput control={control} label='Descripción' name='description' inputType='text' rules={rules} />
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>

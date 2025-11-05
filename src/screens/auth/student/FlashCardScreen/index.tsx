@@ -52,6 +52,7 @@ const { flashcardData, loading } = useFlashCard(moduleId); // Utiliza el moduleI
       setSelectedIncorrectAnswers(flashcardData.incorrect_answer);
       setShowRestartButton(true);
       setShowSuccessModal(true);
+      setGameFinished(true);
     }
   }, [selectedCorrectAnswers, totalCorrectAnswers, flashcardData]);
   

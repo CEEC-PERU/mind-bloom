@@ -49,7 +49,7 @@ export default function UsersScreen({ navigation }: Props) {
         <View style={{ display: "flex", height: windowHeight * 0.64 }}>
           <LoadIndicator animating size='large' />
         </View> :
-        <ScrollView style={{ display: "flex", backgroundColor: "#fff", padding: 20, height: windowHeight * 0.64 }}>
+        <ScrollView style={{ display: "flex", backgroundColor: "#fff", padding: 20, height: windowHeight * 0.52 }}>
           {
             filteredData.map(user => (
               <CardStudent cardType='users' student={user} key={user.user_id} />
